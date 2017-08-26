@@ -14,6 +14,7 @@
 		C7684CBD1F518A06007A6005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7684CBC1F518A06007A6005 /* Assets.xcassets */; };
 		C7684CC01F518A06007A6005 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7684CBE1F518A06007A6005 /* LaunchScreen.storyboard */; };
 		C7684CCB1F518A06007A6005 /* PostsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7684CCA1F518A06007A6005 /* PostsTests.swift */; };
+		C7684CDB1F518ED5007A6005 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7684CDA1F518ED5007A6005 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		C7684CC61F518A06007A6005 /* PostsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PostsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7684CCA1F518A06007A6005 /* PostsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTests.swift; sourceTree = "<group>"; };
 		C7684CCC1F518A06007A6005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7684CDA1F518ED5007A6005 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7684CDB1F518ED5007A6005 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +67,7 @@
 				C7684CB11F518A06007A6005 /* Posts */,
 				C7684CC91F518A06007A6005 /* PostsTests */,
 				C7684CB01F518A06007A6005 /* Products */,
+				C7684CD91F518ED5007A6005 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,6 +135,14 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		C7684CD91F518ED5007A6005 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C7684CDA1F518ED5007A6005 /* Alamofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,6 +153,7 @@
 				C7684CAB1F518A06007A6005 /* Sources */,
 				C7684CAC1F518A06007A6005 /* Frameworks */,
 				C7684CAD1F518A06007A6005 /* Resources */,
+				C7684CDC1F518F99007A6005 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -230,6 +243,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C7684CDC1F518F99007A6005 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C7684CAB1F518A06007A6005 /* Sources */ = {
@@ -380,6 +412,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = K877UC2B8P;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Posts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = loumanv.Posts;
@@ -393,6 +429,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = K877UC2B8P;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Posts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = loumanv.Posts;
