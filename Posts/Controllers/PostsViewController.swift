@@ -8,9 +8,24 @@
 
 import UIKit
 
+protocol PostsViewControllerOutput {
+    func didSelect(post: Post, sender: PostsViewController)
+}
+
 class PostsViewController: UIViewController {
 
     var posts: [Post]
+    var navigationBar: UINavigationController?
+    var controllerOutput: PostsViewControllerOutput?
+
+    @IBOutlet weak var table: UITableView! {
+        didSet {
+            table.estimatedRowHeight = 102
+            table.rowHeight = UITableViewAutomaticDimension
+
+            table.register(UINib(nibName: String(describing: PostCell.self), bundle: nil), forCellReuseIdentifier: String(describing: PostCell.self))
+        }
+    }
 
     init(posts: [Post]) {
         self.posts = posts
@@ -23,6 +38,24 @@ class PostsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        navigationBar = UINavigationController(rootViewController: self)
+        table.delegate = self
+        table.dataSource = self
+    }
+}
+
+extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
+    }
+
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = table.dequeueReusableCell(withIdentifier: String(describing: PostCell.self), for: indexPath) as? PostCell else { return UITableViewCell() }
+        cell.titleLabel.text = posts[indexPath.row].title
+        return cell
+    }
+
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        controllerOutput?.didSelect(post: posts[indexPath.row], sender: self)
     }
 }

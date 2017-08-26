@@ -19,14 +19,14 @@ class AppController: UIViewController {
 
         loadPosts()
     }
-    
+
     func loadPosts() {
         RequestsManager.load(url: URL(string: Urls.baseUrl + Urls.postsUrl)!) { [weak self] (data, error) in
             if error != nil {
                 self?.showErrorMessage(title: "Request Error", message: error.debugDescription)
                 return
             }
-            
+
             guard let parsedPosts = try? self?.parsePosts(data: data), let posts = parsedPosts else {
                 self?.showErrorMessage(title: "Post Parsing Error", message: "")
                 return
