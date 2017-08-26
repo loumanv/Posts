@@ -13,8 +13,11 @@
 		C7684CBB1F518A06007A6005 /* Posts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C7684CB91F518A06007A6005 /* Posts.xcdatamodeld */; };
 		C7684CBD1F518A06007A6005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7684CBC1F518A06007A6005 /* Assets.xcassets */; };
 		C7684CC01F518A06007A6005 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7684CBE1F518A06007A6005 /* LaunchScreen.storyboard */; };
-		C7684CCB1F518A06007A6005 /* PostsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7684CCA1F518A06007A6005 /* PostsTests.swift */; };
+		C7684CCB1F518A06007A6005 /* PostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7684CCA1F518A06007A6005 /* PostTests.swift */; };
 		C7684CDB1F518ED5007A6005 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7684CDA1F518ED5007A6005 /* Alamofire.framework */; };
+		C7684CDE1F51937A007A6005 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7684CDD1F51937A007A6005 /* Post.swift */; };
+		C7684CDF1F51937A007A6005 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7684CDD1F51937A007A6005 /* Post.swift */; };
+		C7DDBC241F51A1EC004EF34C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C7DDBC231F51A1EC004EF34C /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,9 +40,11 @@
 		C7684CBF1F518A06007A6005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7684CC11F518A06007A6005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7684CC61F518A06007A6005 /* PostsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PostsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C7684CCA1F518A06007A6005 /* PostsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTests.swift; sourceTree = "<group>"; };
+		C7684CCA1F518A06007A6005 /* PostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTests.swift; sourceTree = "<group>"; };
 		C7684CCC1F518A06007A6005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7684CDA1F518ED5007A6005 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		C7684CDD1F51937A007A6005 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Model/Post.swift; sourceTree = "<group>"; };
+		C7DDBC231F51A1EC004EF34C /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +69,7 @@
 		C7684CA61F518A06007A6005 = {
 			isa = PBXGroup;
 			children = (
+				C7DDBC231F51A1EC004EF34C /* .swiftlint.yml */,
 				C7684CB11F518A06007A6005 /* Posts */,
 				C7684CC91F518A06007A6005 /* PostsTests */,
 				C7684CB01F518A06007A6005 /* Products */,
@@ -99,7 +105,7 @@
 		C7684CC91F518A06007A6005 /* PostsTests */ = {
 			isa = PBXGroup;
 			children = (
-				C7684CCA1F518A06007A6005 /* PostsTests.swift */,
+				C7684CCA1F518A06007A6005 /* PostTests.swift */,
 				C7684CCC1F518A06007A6005 /* Info.plist */,
 			);
 			path = PostsTests;
@@ -108,6 +114,7 @@
 		C7684CD51F518B39007A6005 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C7684CDD1F51937A007A6005 /* Post.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -154,6 +161,7 @@
 				C7684CAC1F518A06007A6005 /* Frameworks */,
 				C7684CAD1F518A06007A6005 /* Resources */,
 				C7684CDC1F518F99007A6005 /* Carthage */,
+				C7DDBC221F519DF3004EF34C /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -229,6 +237,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7DDBC241F51A1EC004EF34C /* .swiftlint.yml in Resources */,
 				C7684CC01F518A06007A6005 /* LaunchScreen.storyboard in Resources */,
 				C7684CBD1F518A06007A6005 /* Assets.xcassets in Resources */,
 				C7684CB81F518A06007A6005 /* Main.storyboard in Resources */,
@@ -261,6 +270,20 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
+		C7DDBC221F519DF3004EF34C /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"/usr/local/bin:$PATH\"\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -271,6 +294,7 @@
 				C7684CBB1F518A06007A6005 /* Posts.xcdatamodeld in Sources */,
 				C7684CB51F518A06007A6005 /* PostsViewController.swift in Sources */,
 				C7684CB31F518A06007A6005 /* AppDelegate.swift in Sources */,
+				C7684CDE1F51937A007A6005 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +302,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7684CCB1F518A06007A6005 /* PostsTests.swift in Sources */,
+				C7684CCB1F518A06007A6005 /* PostTests.swift in Sources */,
+				C7684CDF1F51937A007A6005 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +515,7 @@
 				C7684CD11F518A06007A6005 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C7684CD21F518A06007A6005 /* Build configuration list for PBXNativeTarget "PostsTests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +524,7 @@
 				C7684CD41F518A06007A6005 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
