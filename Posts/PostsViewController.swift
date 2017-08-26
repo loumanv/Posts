@@ -1,14 +1,14 @@
 //
-//  ViewController.swift
+//  PostsViewController.swift
 //  Posts
 //
-//  Created by Billybatigol on 26/08/2017.
+//  Created by Vasileios Loumanis on 26/08/2017.
 //  Copyright © 2017 Vasileios Loumanis. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class PostsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,5 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
