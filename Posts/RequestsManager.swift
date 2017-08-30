@@ -16,6 +16,11 @@ struct Urls {
     static let commentsUrl = "/comments"
 }
 
+enum ResponseError: LocalizedError {
+    case connection
+    case jsonResponseEmpty
+}
+
 class RequestsManager: NSObject {
 
     static func load(url: URL, completion: @escaping ((Any?, Error?) -> Void)) {
