@@ -8,15 +8,9 @@
 
 import UIKit
 
-protocol PostsViewControllerOutput {
-    func didSelect(post: Post, sender: PostsViewController)
-}
-
 class PostsViewController: UIViewController {
 
-    var posts: [Post]
-    var navigationBar: UINavigationController?
-    var controllerOutput: PostsViewControllerOutput?
+    var viewModel: PostsViewModel
 
     @IBOutlet weak var table: UITableView! {
         didSet {
@@ -26,9 +20,10 @@ class PostsViewController: UIViewController {
             table.register(UINib(nibName: String(describing: PostCell.self), bundle: nil), forCellReuseIdentifier: String(describing: PostCell.self))
         }
     }
+    let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView.init(activityIndicatorStyle: .gray)
 
-    init(posts: [Post]) {
-        self.posts = posts
+    init(viewModel: PostsViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: String(describing: PostsViewController.self), bundle: nil)
     }
 
@@ -38,24 +33,65 @@ class PostsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBar = UINavigationController(rootViewController: self)
+        viewModel.controllerOutput = self
         table.delegate = self
         table.dataSource = self
+        addNavigationItems()
+    }
+
+    func reload() {
+        viewModel.loadPosts()
+    }
+
+    func addNavigationItems() {
+        let activityBarButton = UIBarButtonItem(customView: activityIndicator)
+        navigationItem.rightBarButtonItem  = activityBarButton
+        activityIndicator.startAnimating()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reload", style: .plain, target: self, action: #selector(reload))
+    }
+
+    func showErrorMessage(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
 }
 
 extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Posts"
     }
 
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.posts?.count ?? 0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let posts = viewModel.posts else { return UITableViewCell() }
         guard let cell = table.dequeueReusableCell(withIdentifier: String(describing: PostCell.self), for: indexPath) as? PostCell else { return UITableViewCell() }
         cell.titleLabel.text = posts[indexPath.row].title
         return cell
     }
 
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        controllerOutput?.didSelect(post: posts[indexPath.row], sender: self)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let posts = viewModel.posts else { return }
+        let postDetailVC = PostDetailViewController(viewModel: PostDetailViewModel(post: posts[indexPath.row]))
+        navigationController?.pushViewController(postDetailVC, animated: true)
+    }
+}
+
+extension PostsViewController: PostsViewModelOutput {
+    func postsFetched() {
+        table.reloadData()
+    }
+
+    func handle(error: Error) {
+        showErrorMessage(title: "An Error Occurred", message: error.localizedDescription)
+    }
+
+    func isPerformingRequest(_ isPerformingRequest: Bool) {
+        isPerformingRequest ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
     }
 }

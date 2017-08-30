@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zQI-MY-Mfd">
-                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
@@ -29,7 +29,7 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="zQI-MY-Mfd" secondAttribute="bottom" id="4vX-6h-Ntj"/>
                 <constraint firstAttribute="trailing" secondItem="zQI-MY-Mfd" secondAttribute="trailing" id="JVL-mp-goU"/>
-                <constraint firstItem="zQI-MY-Mfd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="j1p-nH-hYH"/>
+                <constraint firstItem="zQI-MY-Mfd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="j1p-nH-hYH"/>
                 <constraint firstItem="zQI-MY-Mfd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uu5-XA-fXa"/>
             </constraints>
             <point key="canvasLocation" x="26.5" y="51.5"/>
