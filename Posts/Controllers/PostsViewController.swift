@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol PostsViewControllerOutput {
+    func didSelectRowAction(sender: UIViewController, selectedPost: Post)
+}
+
 class PostsViewController: UIViewController {
 
     var viewModel: PostsViewModel
+    var controllerOutput: PostsViewControllerOutput?
 
     @IBOutlet weak var table: UITableView! {
         didSet {
@@ -77,8 +82,7 @@ extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let posts = viewModel.posts else { return }
-        let postDetailVC = PostDetailViewController(viewModel: PostDetailViewModel(post: posts[indexPath.row]))
-        navigationController?.pushViewController(postDetailVC, animated: true)
+        controllerOutput?.didSelectRowAction(sender: self, selectedPost:  posts[indexPath.row])
     }
 }
 

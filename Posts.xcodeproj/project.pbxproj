@@ -33,6 +33,7 @@
 		C7684CCB1F518A06007A6005 /* PostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7684CCA1F518A06007A6005 /* PostTests.swift */; };
 		C7684CDB1F518ED5007A6005 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7684CDA1F518ED5007A6005 /* Alamofire.framework */; };
 		C7DDBC261F51AB48004EF34C /* RequestsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDBC251F51AB48004EF34C /* RequestsManager.swift */; };
+		E015EF571F56FD5600794D74 /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E015EF561F56FD5600794D74 /* AppNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		C7684CCC1F518A06007A6005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7684CDA1F518ED5007A6005 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		C7DDBC251F51AB48004EF34C /* RequestsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestsManager.swift; sourceTree = "<group>"; };
+		E015EF561F56FD5600794D74 /* AppNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppNavigationController.swift; path = Controllers/AppNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 		C7684CD61F518B44007A6005 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E015EF561F56FD5600794D74 /* AppNavigationController.swift */,
 				C71632B51F51CA7900242457 /* PostsViewController.swift */,
 				C71632B61F51CA7900242457 /* PostsViewController.xib */,
 				C704AE5B1F52099B0041F15E /* PostDetailViewController.swift */,
@@ -344,6 +347,7 @@
 				C704AE5D1F52099B0041F15E /* PostDetailViewController.swift in Sources */,
 				C735C76B1F522EBD0004852B /* TitleDetailCell.swift in Sources */,
 				C7684CBB1F518A06007A6005 /* Posts.xcdatamodeld in Sources */,
+				E015EF571F56FD5600794D74 /* AppNavigationController.swift in Sources */,
 				C74511A61F544E5800C9AA86 /* Comment+CoreDataProperties.swift in Sources */,
 				C74511A81F544E5800C9AA86 /* Post+CoreDataProperties.swift in Sources */,
 				C7DDBC261F51AB48004EF34C /* RequestsManager.swift in Sources */,
