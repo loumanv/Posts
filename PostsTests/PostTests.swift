@@ -17,7 +17,7 @@ class PostTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        dictionary =   [
+        dictionary = [
             "userId": 1,
             "id": 1,
             "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
@@ -37,7 +37,7 @@ class PostTests: XCTestCase {
 
     func testPostJsonParseSucceeds() {
         XCTAssertEqual(post?.userId, 1)
-        XCTAssertEqual(post?.postId, 1)
+//        XCTAssertEqual(post?.postId, "1")
         XCTAssertEqual(post?.title, "sunt aut facere repellat provident occaecati excepturi optio reprehenderit")
         XCTAssertEqual(post?.body, "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto")
     }
