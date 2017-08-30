@@ -15,6 +15,23 @@ protocol PostsViewModelOutput {
     func isPerformingRequest(_: Bool)
 }
 
+enum PostSection: Int {
+    case posts
+    static let count = 1
+
+    static let sectionTitles = [
+        posts: "Posts"
+    ]
+
+    func sectionTitle(post: Post) -> String {
+        if let sectionTitle = PostSection.sectionTitles[self] {
+            return sectionTitle +  " last updated at \(Date(timeIntervalSinceNow: post.updatedAt))"
+        } else {
+            return ""
+        }
+    }
+}
+
 class PostsViewModel {
 
     var posts: [Post]?
@@ -40,7 +57,8 @@ class PostsViewModel {
     func loadPosts() {
         fetchFromPersistantStorage()
         controllerOutput?.isPerformingRequest(true)
-        RequestsManager.load(url: URL(string: Urls.baseUrl + Urls.postsUrl)!) { [weak self] (data, error) in
+        guard let url = URL(string: Urls.baseUrl + Urls.postsUrl) else { return }
+        RequestsManager.load(url: url) { [weak self] (data, error) in
 
             self?.controllerOutput?.isPerformingRequest(false)
             guard error == nil, let posts = try? Post.parsePosts(data: data) else {

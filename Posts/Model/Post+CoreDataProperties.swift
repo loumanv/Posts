@@ -2,7 +2,7 @@
 //  Post+CoreDataProperties.swift
 //  Posts
 //
-//  Created by Vasileios Loumanis on 29/08/2017.
+//  Created by Vasileios Loumanis on 30/08/2017.
 //  Copyright © 2017 Vasileios Loumanis. All rights reserved.
 //
 
@@ -19,6 +19,7 @@ extension Post {
     @NSManaged public var postId: String
     @NSManaged public var title: String
     @NSManaged public var userId: Int32
+    @NSManaged public var updatedAt: TimeInterval
     @NSManaged public var comments: NSSet?
     @NSManaged public var user: User?
 

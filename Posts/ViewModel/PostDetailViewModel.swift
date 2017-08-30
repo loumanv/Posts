@@ -82,7 +82,8 @@ class PostDetailViewModel {
 
     func loadUser(of post: Post) {
         dispatchGroup.enter()
-        RequestsManager.load(url: URL(string: Urls.baseUrl + Urls.usersUrl + "?id=\(post.userId)")!) { [weak self] (data, error) in
+        guard let url = URL(string: Urls.baseUrl + Urls.usersUrl + "?postId=\(post.userId)") else { return }
+        RequestsManager.load(url: url) { [weak self] (data, error) in
             self?.loadUserError = error
             self?.userResponse = data
             self?.dispatchGroup.leave()
@@ -91,7 +92,8 @@ class PostDetailViewModel {
 
     func loadComments(of post: Post) {
         dispatchGroup.enter()
-        RequestsManager.load(url: URL(string: Urls.baseUrl + Urls.commentsUrl + "?postId=\(post.postId)")!) { [weak self] (data, error) in
+        guard let url = URL(string: Urls.baseUrl + Urls.commentsUrl + "?postId=" + post.postId) else { return }
+        RequestsManager.load(url: url) { [weak self] (data, error) in
             self?.loadCommentsError = error
             self?.commentsResponse = data
             self?.dispatchGroup.leave()

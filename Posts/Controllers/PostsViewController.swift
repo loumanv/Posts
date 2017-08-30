@@ -66,7 +66,8 @@ class PostsViewController: UIViewController {
 extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Posts"
+        guard let section = PostSection(rawValue: section), let firstPost = viewModel.posts?.first else { return "" }
+        return section.sectionTitle(post: firstPost)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
