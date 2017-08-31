@@ -31,7 +31,7 @@ public class Post: NSManagedObject {
         self.postId = "\(postId)"
         self.title = title
         self.body = body
-        self.updatedAt = 0
+        self.updatedAt = Date().timeIntervalSince1970
     }
 }
 

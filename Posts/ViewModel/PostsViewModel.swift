@@ -25,7 +25,7 @@ enum PostSection: Int {
 
     func sectionTitle(post: Post) -> String {
         if let sectionTitle = PostSection.sectionTitles[self] {
-            return sectionTitle +  " last updated at \(Date(timeIntervalSinceNow: post.updatedAt))"
+            return sectionTitle +  " last updated at \(Date(timeIntervalSince1970: post.updatedAt))"
         } else {
             return ""
         }
